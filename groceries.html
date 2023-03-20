@@ -1,29 +1,21 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="UTF-8">
-  <title>Groceries</title>
-</head>
-<body>
-<ul>
-  <li v-for="grocery in groceries">
-    {{ grocery.quantity }} {{ grocery.name }}
-  </li>
-</ul>
+  <head>
+    <meta charset="UTF-8">
+    <title>Groceries</title>
+  </head>
+  <body>
+    <ul id="grocery-list"></ul>
+    <script type="module">
+      import { groceries } from './grocery.js';
 
-<script src="https://unpkg.com/vue@next"></script>
-<script type="module">
-  import { groceries } from './grocery.js';
+      const groceryListElement = document.getElementById('grocery-list');
 
-  const app = Vue.createApp({
-    data() {
-      return {
-        groceries
-      }
-    }
-  });
-
-  app.mount('body');
-</script>
-</body>
+      groceries.forEach(grocery => {
+        const groceryListItem = document.createElement('li');
+        groceryListItem.textContent = `${grocery.quantity} ${grocery.name} ${grocery.isle} ${grocery.price}`;
+        groceryListElement.appendChild(groceryListItem);
+      });
+    </script>
+  </body>
 </html>
