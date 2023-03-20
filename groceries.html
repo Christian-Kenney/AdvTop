@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Groceries</title>
+</head>
+<body>
+<ul>
+  <li v-for="grocery in groceries">
+    {{ grocery.quantity }} {{ grocery.name }}
+  </li>
+</ul>
+
+<script src="https://unpkg.com/vue@next"></script>
+<script type="module">
+  import { groceries } from './grocery.js';
+
+  const app = Vue.createApp({
+    data() {
+      return {
+        groceries
+      }
+    }
+  });
+
+  app.mount('body');
+</script>
+</body>
+</html>
